@@ -43,7 +43,9 @@ AI框架	PyTorch, Torchvision, NumPy
 
 🚀 快速开始
 在线体验
-直接访问我们的在线演示：立即体验
+直接访问我们的在线演示：fashion-mnist-classifier ∙ main ∙ streamlit_app.py
+
+
 
 
 
@@ -128,7 +130,7 @@ Fork 本仓库
 
 
 📞 联系我们
-📧 邮箱：你的邮箱
+📧 邮箱：1757952556@qq.com
 
 💻 GitHub: lll222qs
 
