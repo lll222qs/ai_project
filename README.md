@@ -43,9 +43,11 @@ AI框架	PyTorch, Torchvision, NumPy
 
 🚀 快速开始
 在线体验
-直接访问我们的在线演示：fashion-mnist-classifier ∙ main ∙ streamlit_app.py
+无需安装，立即在浏览器中体验AI图像分类：
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://fashion-mnist-classifier-my8yyomkawax5v6xjupzj3.streamlit.app/)
 
+**演示地址**：https://fashion-mnist-classifier-my8yyomkawax5v6xjupzj3.streamlit.app/
 
 
 
