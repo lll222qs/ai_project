@@ -17,7 +17,7 @@ import json
 app = FastAPI(title="Fashion-MNIST 识别 API")
 
 
-VALID_API_KEYS = {"your_secure_key_123", "fashion_api_key_789"}
+VALID_API_KEYS = {"123456", "fashion_api_key_789"}
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
 async def verify_api_key(api_key: str = Depends(api_key_header)):
