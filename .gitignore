@@ -1,0 +1,31 @@
+# Python 虚拟环境（通用）
+venv/
+.venv/
+myenv/
+
+# Python 编译文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 日志文件
+*.log
+
+# 模型文件
+*.pt
+*.pth
+
+# 图片文件
+*.png
+*.jpg
+*.jpeg
+
+# 依赖清单的编译文件
+*.egg-info/
+
+
+# 忽略我暂时不想提交的文件
+export_torchscript.py
+fastapi_demo.py
+gradio_app.py
+curl
