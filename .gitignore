@@ -25,7 +25,10 @@ __pycache__/
 
 
 # 忽略我暂时不想提交的文件
+curl
 export_torchscript.py
 fastapi_demo.py
 gradio_app.py
-curl
+gradio_test.py
+log.txt
+main.py
