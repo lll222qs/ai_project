@@ -1,0 +1,21 @@
+# 忽略 Python 编译文件
+__pycache__/
+*.pyc
+*.pyo
+
+# 忽略日志文件
+*.log
+
+# 忽略模型文件（如 TorchScript 模型、.pth 文件）
+*.pt
+*.pth
+
+# 忽略图片文件（如测试用的 133.png）
+*.png
+
+# 忽略虚拟环境（如果有）
+venv/
+.venv/
+
+# 忽略依赖清单的编译文件（如果有）
+*.egg-info/
