@@ -146,9 +146,6 @@ class FashionCNN(nn.Module):
         logits = self.cnn_stack(x)
         return logits
 
-# --- 加载模型 (与之前相同) ---
-
-# ... (此处省略模型加载代码，与你原来的保持一致)
 # 1. 加载原始 PyTorch 模型
 try:
     model_pytorch = FashionCNN()
@@ -168,7 +165,22 @@ except Exception as e:
     logger.error(f"加载 TorchScript 模型失败: {e}")
     model_scripted = None
 
-    # 3. 加载 ONNX 模型
+    # --- 3. 动态量化 PyTorch 模型 ---
+# 注意：动态量化对某些模型（如Transformer）效果显著，但对简单的CNN可能效果有限。
+model_quantized = None
+try:
+    model_quantized = torch.quantization.quantize_dynamic(
+        model_pytorch,  # 原始模型
+        {torch.nn.Linear},  # 指定要量化的层类型
+        dtype=torch.qint8  # 量化目标数据类型
+    )
+    model_quantized.eval()
+    logger.info("动态量化 PyTorch 模型加载成功。")
+except Exception as e:
+    logger.error(f"创建动态量化模型失败: {e}")
+    model_quantized = None
+
+    # 4. 加载 ONNX 模型
     # --- 新增：加载 ONNX 模型 ---
 model_onnx = None
 try:
@@ -189,26 +201,8 @@ except Exception as e:
     logger.error(f"加载 ONNX 模型失败: {e}")
     model_onnx = None
 
-# --- (可选) 动态量化 PyTorch 模型 ---
-# 注意：动态量化对某些模型（如Transformer）效果显著，但对简单的CNN可能效果有限。
-model_quantized = None
-try:
-    # 假设 model_pytorch 已经加载
-    # 我们将创建一个量化后的模型副本
-    model_quantized = torch.quantization.quantize_dynamic(
-        model_pytorch,  # 原始模型
-        {torch.nn.Linear},  # 指定要量化的层类型
-        dtype=torch.qint8  # 量化目标数据类型
-    )
-    model_quantized.eval()
-    logger.info("动态量化 PyTorch 模型加载成功。")
-except Exception as e:
-    logger.error(f"创建动态量化模型失败: {e}")
-    model_quantized = None
 
-
-
-# --- 图片预处理函数 (与之前相同) ---
+# --- 图片预处理函数 ---
 
 def preprocess_image(image: Image.Image):
     try:
@@ -456,11 +450,11 @@ async def predict_benchmark(
         models_to_test["PyTorch"] = model_pytorch
     if model_scripted:
         models_to_test["TorchScript"] = model_scripted
-    if model_onnx:
-        models_to_test["ONNX"] = model_onnx
     if model_quantized:
         models_to_test["PyTorch (Quantized)"] = model_quantized
-
+    if model_onnx:
+        models_to_test["ONNX"] = model_onnx
+    
     if not models_to_test:
         raise HTTPException(
             status_code=503, 
