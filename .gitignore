@@ -9,15 +9,15 @@ __pycache__/
 *$py.class
 
 # 日志文件
-*.log
+
 
 # 模型文件
-*.pt
-*.pth
+
+
 
 # 图片文件
 *.png
-*.jpg
+
 *.jpeg
 
 # 依赖清单的编译文件
@@ -26,10 +26,97 @@ __pycache__/
 
 # 忽略我暂时不想提交的文件
 curl
-export_torchscript.py
 fastapi_demo.py
 gradio_app.py
 gradio_test.py
 log.txt
 main.py
-requirements.txt
+main_v2.py
+main_v3.py
+gradio_app.py
+gradio_test.py
+streamlit_app.py
+fastapi_demo.py
+export_torchscript.py
+# 测试图片（如果不需要共享）
+133.png
+
+# 其他无关文件
+log.txt
+
+# --------------------------
+# Python 通用忽略规则
+# --------------------------
+# 字节码文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 分发/打包
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 测试
+.coverage
+.tox/
+.nox/
+. pytest_cache/
+
+
+# 2. 日志文件
+*.log
+app.log
+
+# 3. 数据库文件
+*.db
+test.db
+
+# 4. 模型文件 (通常较大，建议通过其他方式共享或在 README 中说明如何获取)
+#    如果你的模型文件很小（如几MB）且希望仓库完整，可删除下面这几行
+fashion_model.pth
+fashion_model_scripted.pt
+
+
+# 5. IDE 配置文件
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# IntelliJ IDEA (PyCharm)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim
+.*.swp
+.*.swo
+
+# --------------------------
+# 操作系统特定文件
+# --------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.Spotlight-V100
+.Trashes
